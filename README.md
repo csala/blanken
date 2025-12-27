@@ -29,10 +29,10 @@ Add the hook to your `.pre-commit-config.yaml`:
 
 ```yaml
 repos:
-  - repo: https://github.com/csala/blanket
-    rev: v0.1.0
-    hooks:
-      - id: blanket
+- repo: https://github.com/csala/blanket
+  rev: v0.1.0
+  hooks:
+  - id: blanket
 ```
 
 Install and run:
