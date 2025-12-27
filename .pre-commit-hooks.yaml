@@ -2,6 +2,6 @@
   name: blanket
   description: "Blank line enforcement for Python"
   entry: python -m blanket
-  language: system
+  language: python
   types: [python]
   minimum_pre_commit_version: "1.0.0"
