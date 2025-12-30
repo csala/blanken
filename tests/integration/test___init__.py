@@ -1,4 +1,4 @@
-from blanket import enforce
+from blanken import enforce
 
 
 def test_enforce_updates_file_with_missing_blank_line(tmp_path):

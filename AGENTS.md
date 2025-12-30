@@ -29,7 +29,7 @@
 
 ## Project Structure & Module Organization
 
-- `blanket/__main__.py` is the current entry point for the linter.
+- `blanken/__main__.py` is the current entry point for the linter.
 - `docs/` captures technical references (`docs/CONVENTIONS.md`, `docs/TESTING.md`).
 - `scripts/` holds developer utilities such as `scripts/lint.sh`.
 - `pyproject.toml` defines packaging metadata and tool configuration.

@@ -1,4 +1,4 @@
-PROJECT_NAME = blanket
+PROJECT_NAME = blanken
 
 .PHONY: help  ## Show this help
 help:  ## Show this help

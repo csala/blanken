@@ -1,6 +1,6 @@
 from unittest.mock import Mock, patch
 
-from blanket.enforcer import Blanket, get_indentation, is_blank_or_comment
+from blanken.enforcer import Blanken, get_indentation, is_blank_or_comment
 
 
 def _configure_path_mock(path_class_mock, source):
@@ -52,12 +52,12 @@ def test_is_blank_or_comment_recognizes_blanks_and_comments():
     assert code_result is False
 
 
-@patch("blanket.enforcer.Path")
-def test_blanket_check_inserts_blank_for_two_level_dedent(path_class_mock):
-    """Test Blanket.check inserts a blank line for a two-level dedent.
+@patch("blanken.enforcer.Path")
+def test_blanken_check_inserts_blank_for_two_level_dedent(path_class_mock):
+    """Test Blanken.check inserts a blank line for a two-level dedent.
 
     Setup:
-        - patch blanket.enforcer.Path to return a mock Path with controlled read/write.
+        - patch blanken.enforcer.Path to return a mock Path with controlled read/write.
     Input:
         - source with a two-level dedent without a blank line
     Expected Output:
@@ -70,7 +70,7 @@ def test_blanket_check_inserts_blank_for_two_level_dedent(path_class_mock):
     path_object_mock = _configure_path_mock(path_class_mock, source)
 
     # Run
-    enforcer = Blanket("example.py")
+    enforcer = Blanken("example.py")
     changed = enforcer.check()
 
     # Assert
@@ -80,12 +80,12 @@ def test_blanket_check_inserts_blank_for_two_level_dedent(path_class_mock):
     assert "pass\n\nprint('hi')\n" in written
 
 
-@patch("blanket.enforcer.Path")
-def test_blanket_check_inserts_blank_for_one_level_dedent(path_class_mock):
-    """Test Blanket.check inserts a blank line for a one-level dedent.
+@patch("blanken.enforcer.Path")
+def test_blanken_check_inserts_blank_for_one_level_dedent(path_class_mock):
+    """Test Blanken.check inserts a blank line for a one-level dedent.
 
     Setup:
-        - patch blanket.enforcer.Path to return a mock Path with controlled read/write.
+        - patch blanken.enforcer.Path to return a mock Path with controlled read/write.
     Input:
         - source with a one-level dedent without a blank line
     Expected Output:
@@ -98,7 +98,7 @@ def test_blanket_check_inserts_blank_for_one_level_dedent(path_class_mock):
     path_object_mock = _configure_path_mock(path_class_mock, source)
 
     # Run
-    enforcer = Blanket("example.py")
+    enforcer = Blanken("example.py")
     changed = enforcer.check()
 
     # Assert
@@ -108,12 +108,12 @@ def test_blanket_check_inserts_blank_for_one_level_dedent(path_class_mock):
     assert "pass\n\nprint('hi')\n" in written
 
 
-@patch("blanket.enforcer.Path")
-def test_blanket_check_allows_short_continuation_without_blank(path_class_mock):
-    """Test Blanket.check allows continuation blocks with three statements or fewer.
+@patch("blanken.enforcer.Path")
+def test_blanken_check_allows_short_continuation_without_blank(path_class_mock):
+    """Test Blanken.check allows continuation blocks with three statements or fewer.
 
     Setup:
-        - patch blanket.enforcer.Path to return a mock Path with controlled read/write.
+        - patch blanken.enforcer.Path to return a mock Path with controlled read/write.
     Input:
         - if/else where the if body has two statements and no blank line before else
     Expected Output:
@@ -126,7 +126,7 @@ def test_blanket_check_allows_short_continuation_without_blank(path_class_mock):
     path_object_mock = _configure_path_mock(path_class_mock, source)
 
     # Run
-    enforcer = Blanket("example.py")
+    enforcer = Blanken("example.py")
     changed = enforcer.check()
 
     # Assert
@@ -134,12 +134,12 @@ def test_blanket_check_allows_short_continuation_without_blank(path_class_mock):
     path_object_mock.write_text.assert_not_called()
 
 
-@patch("blanket.enforcer.Path")
-def test_blanket_check_inserts_blank_for_long_continuation(path_class_mock):
-    """Test Blanket.check inserts a blank line for long continuation blocks.
+@patch("blanken.enforcer.Path")
+def test_blanken_check_inserts_blank_for_long_continuation(path_class_mock):
+    """Test Blanken.check inserts a blank line for long continuation blocks.
 
     Setup:
-        - patch blanket.enforcer.Path to return a mock Path with controlled read/write.
+        - patch blanken.enforcer.Path to return a mock Path with controlled read/write.
     Input:
         - if/else where the if body has four statements and no blank line before else
     Expected Output:
@@ -160,7 +160,7 @@ def test_blanket_check_inserts_blank_for_long_continuation(path_class_mock):
     path_object_mock = _configure_path_mock(path_class_mock, source)
 
     # Run
-    enforcer = Blanket("example.py")
+    enforcer = Blanken("example.py")
     changed = enforcer.check()
 
     # Assert
@@ -170,12 +170,12 @@ def test_blanket_check_inserts_blank_for_long_continuation(path_class_mock):
     assert "d = 4\n\nelse:\n" in written
 
 
-@patch("blanket.enforcer.Path")
-def test_blanket_check_inserts_blank_for_try_except_long_body(path_class_mock):
-    """Test Blanket.check inserts a blank line for try/except with a long body.
+@patch("blanken.enforcer.Path")
+def test_blanken_check_inserts_blank_for_try_except_long_body(path_class_mock):
+    """Test Blanken.check inserts a blank line for try/except with a long body.
 
     Setup:
-        - patch blanket.enforcer.Path to return a mock Path with controlled read/write.
+        - patch blanken.enforcer.Path to return a mock Path with controlled read/write.
     Input:
         - try/except where the try body has four statements and no blank line before except
     Expected Output:
@@ -196,7 +196,7 @@ def test_blanket_check_inserts_blank_for_try_except_long_body(path_class_mock):
     path_object_mock = _configure_path_mock(path_class_mock, source)
 
     # Run
-    enforcer = Blanket("example.py")
+    enforcer = Blanken("example.py")
     changed = enforcer.check()
 
     # Assert
@@ -206,12 +206,12 @@ def test_blanket_check_inserts_blank_for_try_except_long_body(path_class_mock):
     assert "d = 4\n\nexcept Exception:\n" in written
 
 
-@patch("blanket.enforcer.Path")
-def test_blanket_check_allows_try_finally_short_body(path_class_mock):
-    """Test Blanket.check allows try/finally with three statements or fewer.
+@patch("blanken.enforcer.Path")
+def test_blanken_check_allows_try_finally_short_body(path_class_mock):
+    """Test Blanken.check allows try/finally with three statements or fewer.
 
     Setup:
-        - patch blanket.enforcer.Path to return a mock Path with controlled read/write.
+        - patch blanken.enforcer.Path to return a mock Path with controlled read/write.
     Input:
         - try/finally where the try body has three statements and no blank line before finally
     Expected Output:
@@ -224,7 +224,7 @@ def test_blanket_check_allows_try_finally_short_body(path_class_mock):
     path_object_mock = _configure_path_mock(path_class_mock, source)
 
     # Run
-    enforcer = Blanket("example.py")
+    enforcer = Blanken("example.py")
     changed = enforcer.check()
 
     # Assert

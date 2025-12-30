@@ -24,7 +24,7 @@ def is_blank_or_comment(line):
     return not stripped or stripped.startswith("#")
 
 
-class Blanket:
+class Blanken:
     def __init__(self, filepath):
         self.filepath = Path(filepath)
         self.source_lines = self.filepath.read_text(encoding="utf-8").splitlines(keepends=True)
@@ -297,10 +297,10 @@ class Blanket:
 
 
 def enforce(filepaths):
-    """Apply blanket formatting to files. Returns True if any changes are made."""
+    """Apply blanken formatting to files. Returns True if any changes are made."""
     has_changes = False
     for filepath in filepaths:
-        enforcer = Blanket(filepath)
+        enforcer = Blanken(filepath)
         if enforcer.check():
             print(f"Fixed blank lines in: {filepath}")
             has_changes = True

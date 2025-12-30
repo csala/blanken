@@ -33,13 +33,13 @@ pytest tests/unit/test_some_module.py::test_function_name
 To run tests with a coverage report:
 
 ```bash
-pytest --cov=blanket
+pytest --cov=blanken
 ```
 
 To generate an HTML coverage report:
 
 ```bash
-pytest --cov=blanket --cov-report=html
+pytest --cov=blanken --cov-report=html
 ```
 
 ## Creating New Tests
@@ -51,11 +51,11 @@ Tests are organized into a `tests` folder, which contains three subfolders:
 - `unit`: Contains unit tests for isolated components.
 - `integration`: Contains integration tests for testing interactions between components or with
   external systems.
-- `cli`: Contains CLI tests that invoke `python -m blanket` using `subprocess.Popen`.
+- `cli`: Contains CLI tests that invoke `python -m blanken` using `subprocess.Popen`.
 
-The folder structure mirrors the structure of the application. Tests for modules under `blanket/`
-live directly under the corresponding test type without an extra `blanket/` subfolder. For example,
-tests for `blanket/enforcer.py` are located in:
+The folder structure mirrors the structure of the application. Tests for modules under `blanken/`
+live directly under the corresponding test type without an extra `blanken/` subfolder. For example,
+tests for `blanken/enforcer.py` are located in:
 
 - `tests/unit/test_enforcer.py` for unit tests.
 - `tests/integration/test_enforcer.py` for integration tests.
@@ -304,7 +304,7 @@ import subprocess
 def test_cli_help_shows_usage():
     # Run
     result = subprocess.run(
-        ["blanket", "--help"],
+        ["blanken", "--help"],
         check=False,
         capture_output=True,
         text=True,
@@ -468,7 +468,7 @@ import subprocess
 def test_cli_help_output():
     # Run
     result = subprocess.run(
-        ["blanket", "--help"],
+        ["blanken", "--help"],
         check=False,
         capture_output=True,
         text=True,

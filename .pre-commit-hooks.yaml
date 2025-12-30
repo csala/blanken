@@ -1,7 +1,7 @@
-- id: blanket
-  name: blanket
+- id: blanken
+  name: blanken
   description: "Blank line enforcement for Python"
-  entry: python -m blanket
+  entry: python -m blanken
   language: python
   types: [python]
   minimum_pre_commit_version: "1.0.0"

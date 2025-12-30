@@ -35,8 +35,8 @@ repos:
     - mdformat-pyproject
 - repo: local
   hooks:
-  - id: blanket
-    name: blanket
-    entry: python -m blanket
+  - id: blanken
+    name: blanken
+    entry: python -m blanken
     language: system
     types: [python]
