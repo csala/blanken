@@ -1,8 +1,8 @@
-"""CLI entry point for Blanket."""
+"""CLI entry point for Blanken."""
 
 import sys
 
-from blanket import enforce
+from blanken import enforce
 
 
 def main():

@@ -1,10 +1,10 @@
-# Blanket
+# Blanken
 
-Blank Line Enforcement
+Blank Line Enforcement for Python
 
 ## Overview
 
-Blanket is a Python code auto-formatter that enforces separation of logical code blocks via proper
+Blanken is a Python code auto-formatter that enforces separation of logical code blocks via proper
 usage of blank lines.
 
 It uses indentation changes and keywords as the primary way to know where logical blocks start or
@@ -15,13 +15,13 @@ end, and inserts blank lines to separate them if they are missing.
 Run on one or more files to insert blank lines where required:
 
 ```bash
-blanket path/to/file.py
+blanken path/to/file.py
 ```
 
 Use from Python:
 
 ```python
-from blanket import enforce
+from blanken import enforce
 
 enforce(["path/to/file.py"])
 ```
@@ -32,24 +32,24 @@ Add the hook to your `.pre-commit-config.yaml`:
 
 ```yaml
 repos:
-- repo: https://github.com/csala/blanket
+- repo: https://github.com/csala/blanken
   rev: v0.1.0
   hooks:
-  - id: blanket
+  - id: blanken
 ```
 
-This hook will auto-format the files and fail if any file has been modified by blanket.
+This hook will auto-format the files and fail if any file has been modified by blanken.
 
 # Philosophy
 
-The idea behind Blanket is to guarantee that source code is easy to read and understand at first
-glance with as little mental effort as possible. And we, the blanket authors, believe that blank
+The idea behind Blanken is to guarantee that source code is easy to read and understand at first
+glance with as little mental effort as possible. And we, the blanken authors, believe that blank
 lines play a super important role in this "first glance" understanding: by using them to properly
 separate logically unrelated blocks of code, we help the brain quickly understand the context in
 which the code that is being read operates while keeping it isolated from other unrelated blocks.
 
 Identifying which lines of code are related or unrelated with simple rules that do not leverage
-semantic understanding of the code is really hard. For this reason, blanket only enforces a few
+semantic understanding of the code is really hard. For this reason, blanken only enforces a few
 simple rules based on keywords and indented blocks: We understand that when indentation is reduced,
 the lines that follow are logically unrelated to the previous ones, with the exception of some
 special continuation blocks like else or elif, where the lines that follow may need to be kept in
@@ -88,6 +88,7 @@ do_next()
 
 If we find a line that has 1 indentation level less than the previous one, we consider that it is
 unrelated to the previous one if it does not start with any of the following continuation keywords:
+
 - `else`
 - `elif`
 - `except`

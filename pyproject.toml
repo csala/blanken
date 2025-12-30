@@ -1,6 +1,6 @@
 [project]
-name = "blanket"
-description = "Blank Line Enforcement"
+name = "blanken"
+description = "Blank Line Enforcement for Python"
 readme = "README.md"
 requires-python = ">=3.11"
 dynamic = [
@@ -34,10 +34,10 @@ build-backend = "setuptools.build_meta"
 fallback_version = "0.0.0"
 
 [tool.setuptools]
-packages = ["blanket"]
+packages = ["blanken"]
 
 [project.scripts]
-blanket = "blanket.__main__:main"
+blanken = "blanken.__main__:main"
 
 [tool.ruff]
 line-length = 99

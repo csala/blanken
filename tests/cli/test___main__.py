@@ -5,9 +5,9 @@ import sys
 from pathlib import Path
 
 
-def _run_blanket_cli(repo_root, args):
+def _run_blanken_cli(repo_root, args):
     process = subprocess.Popen(
-        [sys.executable, "-m", "blanket", *args],
+        [sys.executable, "-m", "blanken", *args],
         cwd=repo_root,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -33,7 +33,7 @@ def test_cli_returns_nonzero_when_changes_made(tmp_path):
     target.write_text("if True:\n    pass\nprint('hi')\n", encoding="utf-8")
 
     # Run
-    returncode, stdout, stderr = _run_blanket_cli(repo_root, [str(target)])
+    returncode, stdout, stderr = _run_blanken_cli(repo_root, [str(target)])
 
     # Assert
     assert returncode == 1
@@ -60,7 +60,7 @@ def test_cli_returns_zero_when_no_changes_needed(tmp_path):
     target.write_text(original, encoding="utf-8")
 
     # Run
-    returncode, stdout, stderr = _run_blanket_cli(repo_root, [str(target)])
+    returncode, stdout, stderr = _run_blanken_cli(repo_root, [str(target)])
 
     # Assert
     assert returncode == 0
