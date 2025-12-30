@@ -30,6 +30,7 @@ clean:
 	find . -type f -name "*.pyd" -delete
 	find . -type d -name ".ruff_cache" -exec rm -rf {} +
 	rm -rf build
+	rm -rf dist
 
 ## =============================================================================
 ## Code quality and tests
@@ -60,3 +61,18 @@ coverage:
 	coverage report -m
 	coverage html
 	x-www-browser htmlcov/index.html
+
+.PHONY: build  ## Build source and wheel distributions
+build:
+	$(MAKE) clean
+	python -m build
+
+.PHONY: release  ## Upload a release to PyPI
+release:
+	$(MAKE) build
+	twine upload dist/*
+
+.PHONY: test-release  ## Upload a release to TestPyPI
+test-release:
+	$(MAKE) build
+	twine upload --repository testpypi dist/*
