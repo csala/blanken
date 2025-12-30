@@ -16,11 +16,11 @@ install:
 
 .PHONY: install-test  ## Install as a package with test dependencies
 install-test:
-	pip install .[test]
+	pip install . --group test
 
 .PHONY: install-develop  ## Install in editable mode, with development and test dependencies
 install-develop:
-	pip install -e .[test,develop]
+	pip install -e . --group test --group develop
 
 .PHONY: clean  ## Remove build artifacts and cache files
 clean:
